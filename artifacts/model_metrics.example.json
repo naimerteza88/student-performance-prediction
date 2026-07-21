@@ -1,0 +1,24 @@
+{
+  "environment_note": "Reference run with Python 3.12, pandas 2.2.3, and scikit-learn 1.8.0",
+  "dataset_rows": 1000,
+  "train_rows": 800,
+  "test_rows": 200,
+  "best_model": "linear_regression",
+  "models": {
+    "linear_regression": {
+      "mae": 6.9807,
+      "rmse": 8.5745,
+      "r2": 0.6979
+    },
+    "gradient_boosting": {
+      "mae": 7.0091,
+      "rmse": 8.6286,
+      "r2": 0.694
+    },
+    "random_forest": {
+      "mae": 7.4887,
+      "rmse": 9.1942,
+      "r2": 0.6526
+    }
+  }
+}

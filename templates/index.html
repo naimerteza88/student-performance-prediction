@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Predict a student's math score with a trained regression model.">
+    <title>Student Math Score Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="intro">
+        <p class="eyebrow">End-to-end machine learning</p>
+        <h1>Student math score predictor</h1>
+        <p class="lede">
+          Enter learning context and existing scores. The trained model estimates a math score
+          from 0 to 100.
+        </p>
+        <div class="note">
+          <strong>Responsible design:</strong> gender and race/ethnicity are not used as model
+          inputs. This educational demo must not be used for admissions, grading, or student
+          decisions.
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="form-heading">
+        <h2 id="form-heading">Student information</h2>
+        <form action="{{ url_for('predict') }}" method="post">
+          <label>
+            Parent/guardian education
+            <select name="parental_level_of_education" required>
+              <option value="" disabled {% if not form.get('parental_level_of_education') %}selected{% endif %}>Select an option</option>
+              {% for value in education_levels %}
+                <option value="{{ value }}" {% if form.get('parental_level_of_education') == value %}selected{% endif %}>{{ value|title }}</option>
+              {% endfor %}
+            </select>
+          </label>
+
+          <div class="grid-two">
+            <label>
+              Lunch type
+              <select name="lunch" required>
+                {% for value in lunch_options %}
+                  <option value="{{ value }}" {% if form.get('lunch') == value %}selected{% endif %}>{{ value|title }}</option>
+                {% endfor %}
+              </select>
+            </label>
+            <label>
+              Test preparation
+              <select name="test_preparation_course" required>
+                {% for value in preparation_options %}
+                  <option value="{{ value }}" {% if form.get('test_preparation_course') == value %}selected{% endif %}>{{ value|title }}</option>
+                {% endfor %}
+              </select>
+            </label>
+          </div>
+
+          <div class="grid-two">
+            <label>
+              Reading score
+              <input name="reading_score" type="number" min="0" max="100" step="1" value="{{ form.get('reading_score', '') }}" placeholder="0–100" required>
+            </label>
+            <label>
+              Writing score
+              <input name="writing_score" type="number" min="0" max="100" step="1" value="{{ form.get('writing_score', '') }}" placeholder="0–100" required>
+            </label>
+          </div>
+
+          <button type="submit">Predict math score</button>
+        </form>
+
+        {% if prediction is not none %}
+          <div class="result success" role="status">
+            <span>Estimated math score</span>
+            <strong>{{ prediction }} / 100</strong>
+          </div>
+        {% endif %}
+        {% if error %}
+          <div class="result error" role="alert">{{ error }}</div>
+        {% endif %}
+      </section>
+    </main>
+  </body>
+</html>

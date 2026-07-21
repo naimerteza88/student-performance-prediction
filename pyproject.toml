@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "student-performance-ml"
+version = "1.0.0"
+description = "An end-to-end machine-learning project that predicts student math scores."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "Flask==3.1.1",
+  "joblib==1.5.1",
+  "pandas==2.2.3",
+  "scikit-learn==1.7.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.4.1", "ruff==0.12.2"]
+
+[project.scripts]
+train-student-model = "student_performance.train:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = [".", "src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
