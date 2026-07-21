@@ -55,4 +55,4 @@ The preprocessing steps and the trained estimator are one saved `Pipeline`. The 
 - Added validation and clearer errors.
 - Added automated tests and GitHub Actions.
 - Added Docker support.
-- Added a detailed README, explanation, video script, and LinkedIn draft.
+- Added a detailed README and easy-English project explanation.
