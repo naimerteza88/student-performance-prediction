@@ -41,7 +41,7 @@ student-performance-ml/
 ├── .github/workflows/ci.yml     # Automated linting, tests, and training
 ├── artifacts/                   # Generated model and metrics
 ├── data/student_performance.csv # Source dataset
-├── docs/                        # Presentation and LinkedIn material
+├── docs/                        # Project explanation
 ├── src/student_performance/
 │   ├── config.py                # Paths and feature definitions
 │   ├── data.py                  # Dataset loading and validation
