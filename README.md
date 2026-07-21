@@ -60,8 +60,8 @@ student-performance-ml/
 ### 1. Clone and enter the project
 
 ```bash
-git clone YOUR_REPOSITORY_URL
-cd student-performance-ml
+git clone https://github.com/naimerteza88/student-performance-prediction.git
+cd student-performance-prediction
 ```
 
 ### 2. Create a virtual environment
